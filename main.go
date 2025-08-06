@@ -7,15 +7,13 @@ import (
 	"net/http"
 )
 
-/* {"id":507,"quote":"Let silence take you to the core of life.","author":"Rumi"}% */
-
 type Quote_t struct {
 	Id     int64  `json:"id"`
 	Quote  string `json:"quote"`
 	Author string `json:"author"`
 }
 
-func Quotes_gen(api string) *Quote_t {
+func quotes_gen(api string) *Quote_t {
 	resp, err := http.Get(api)
 	if err != nil {
 		fmt.Println("Error: Failed to fetch quote.", err)
@@ -39,17 +37,26 @@ func Quotes_gen(api string) *Quote_t {
 	return &quote
 }
 
-func Fmt_quote(quote *Quote_t) string {
-	str := "%s\n\t\t\t%s"
+func fmt_quote(quote *Quote_t) string {
+	str := "\"%s\"\n >>%s<<"
 	str = fmt.Sprintf(str, quote.Quote, quote.Author)
 	return str
+}
+
+func draw_ascii_art() {
+	ascii_art := "\n /\\_/\\\n" +
+		"( o.o )\n" +
+		" > - < "
+
+	fmt.Println(ascii_art)
 }
 
 func main() {
 	api := "https://dummyjson.com/quotes/random"
 
-	quote := Quotes_gen(api)
+	quote := quotes_gen(api)
 
-	quote_fmt_str := Fmt_quote(quote)
+	quote_fmt_str := fmt_quote(quote)
+	draw_ascii_art()
 	fmt.Println(quote_fmt_str)
 }
