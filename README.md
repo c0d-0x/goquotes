@@ -1,6 +1,6 @@
 # goquotes
 
-![goquotes Screenshot](https://raw.githubusercontent.com/c0d-0x/goqoutes/main/resources/goquotes.png)
+![goquotes Screenshot](https://github.com/c0d-0x/goquotes/blob/main/resources/goquotes.png)
 
 A simple command-line application that displays a random inspirational quote every time you run it.
 
